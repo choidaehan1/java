@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 응용 프로그램에 필요한 스타터
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA 사용 시 필요한 스타터
+//    implementation 'org.springframework.security:spring-security-test'
+    runtimeOnly 'com.h2database:h2' // 필요에 따라 다른 데이터베이스 의존성을 추가할 수 있습니다.
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    dependencies {
+        implementation 'javax.validation:validation-api:2.0.1.Final'
+        implementation 'org.hibernate.validator:hibernate-validator:6.1.5.Final'
+    }
+
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    // Security
+
+
+
+    // Thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    dependencies {
+
+
+
+    }
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+tasks.compileJava {
+    options.compilerArgs << "-Xlint:deprecation"
+}

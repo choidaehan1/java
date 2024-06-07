@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <style>
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h2>로그인</h2>
+<form th:action="@{/user/login}" method="post" th:object="${loginDto}">
+    <div>
+        <label for="userId">아이디를 입력하세요</label>
+        <input type="text" id="userId" name="userId" th:field="*{userId}" placeholder="아이디를 입력하세요">
+    </div>
+    <div>
+        <label for="userPw">비밀번호를 입력하세요</label>
+        <input type="password" id="userPw" name="userPw" th:field="*{userPw}" placeholder="비밀번호를 입력하세요">
+    </div>
+    <div th:if="${error}">
+        <p th:text="${error}">에러 메시지</p>
+    </div>
+    <button type="submit">로그인</button>
+    <a th:href="@{/user/register}" class="button-link">회원가입</a>
+</form>
+</body>
+</html>
